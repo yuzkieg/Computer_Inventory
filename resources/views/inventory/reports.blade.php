@@ -46,6 +46,11 @@
             padding: 10px;
         }
 
+        .active {
+            background-color: #444; /* Highlight color for active link */
+            border-radius: 5px;
+        }
+
         .logout-btn {
             position: absolute;
             bottom: 20px;
@@ -68,7 +73,7 @@
         }
 
         .main-content {
-            margin-left: 160px; /* Adjust based on sidebar width */
+            margin-left: 270px; /* Adjust based on sidebar width */
             padding: 20px;
             flex-grow: 1;
         }
@@ -139,10 +144,10 @@
         <div class="sidebar">
             <img src="{{ asset('images/image.png') }}" alt="Logo" class="logo">
             <h1>Inventory System</h1>
-            <a href="{{ route('dashboard') }}" class="nav-link">Place Order</a>
-            <a href="{{ route('stacks') }}" class="nav-link">Stacks</a>
-            <a href="{{ route('supplier') }}" class="nav-link">Supplier</a>
-            <a href="{{ route('reports') }}" class="nav-link">Reports</a>
+            <a href="{{ route('order') }}" class="nav-link {{ request()->routeIs('order') ? 'active' : '' }}">Place Order</a>
+            <a href="{{ route('stacks') }}" class="nav-link {{ request()->routeIs('stacks') ? 'active' : '' }}">Stocks</a>
+            <a href="{{ route('supplier') }}" class="nav-link {{ request()->routeIs('supplier') ? 'active' : '' }}">Supplier</a>
+            <a href="{{ route('reports') }}" class="nav-link {{ request()->routeIs('reports') ? 'active' : '' }}">Reports</a>
             <a href="{{ route('login') }}" class="logout-btn"><i class="bi bi-box-arrow-right"></i> Log out</a>
         </div>
 
@@ -172,7 +177,7 @@
                 </table>
 
                 <div class="btn-container">
-                    <a href="{{ route('dashboard') }}" class="btn btn-custom btn-back"><i class="bi bi-arrow-left"></i> Back</a>
+                    <a href="{{ route('order') }}" class="btn btn-custom btn-back"><i class="bi bi-arrow-left"></i> Back</a>
                     <button class="btn btn-custom btn-print" onclick="window.print()"><i class="bi bi-printer"></i> Print</button>
                 </div>
             </div>

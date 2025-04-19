@@ -105,4 +105,19 @@ class ProductController extends Controller
 
     return redirect()->route('stacks')->with('success', 'Product restocked successfully!');
 }
+    public function stockOut()
+    {
+        // Fetching products with zero quantity
+        $products = Product::with('supplier')->where('quantity', 0)->get();
+        return view('inventory.stockout', compact('products'));
+    }
+    public function order()
+    {
+        // Fetch all products from the database
+        $products = Product::all();
+        
+        // Return the order view with the products, fixing the path
+        return view('inventory.order', compact('products'));
+    }
+
 }

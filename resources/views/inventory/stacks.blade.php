@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stacks</title>
+    <title>Stocks</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <style>
@@ -157,15 +157,15 @@
         <div class="sidebar">
             <img src="images/image.png" alt="Logo" class="logo">
             <h1>Inventory System</h1>
-            <a href="{{ route('dashboard') }}" class="nav-link">Place Order</a>
-            <a href="{{ route('stacks') }}" class="nav-link {{ Route::is('stacks') ? 'active' : '' }}">Stacks</a>
+            <a href="{{ route('order') }}" class="nav-link">Place Order</a>
+            <a href="{{ route('stacks') }}" class="nav-link {{ Route::is('stacks') ? 'active' : '' }}">Stocks</a>
             <a href="{{ route('supplier') }}" class="nav-link {{ Route::is('supplier') ? 'active' : '' }}">Supplier</a>
             <a href="{{ route('reports') }}" class="nav-link {{ Route::is('reports') ? 'active' : '' }}">Reports</a>
             <a href="{{ route('login') }}" class="btn-logout btn-logout:hover"><i class="bi bi-box-arrow-right"></i> Log out</a>
         </div>
         
         <div class="main-content">
-            <h2>Stacks</h2>
+            <h2>Stocks</h2>
             <input type="text" id="search-bar" class="search-bar" placeholder="Search">
         
             <!-- Alert for low stock products -->
@@ -217,15 +217,11 @@
                                 <td style="text-align: center; padding: 10px; border: 1px solid white;">{{ $product->serial_number }}</td>
                                 <td style="text-align: center; padding: 10px; border: 1px solid white;">{{ $product->supplier->supplier_name }}</td>
                                 <td style="text-align: center; padding: 10px; border: 1px solid white;">
-                                    <a href="{{ route('update_product', $product->id) }}" class="btn btn-sm btn-outline-warning">
-                                        <i class="bi bi-pencil-square"></i> Edit
-                                    </a>
+                                    <a href="{{ route('update_product', $product->id) }}" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil-square"></i> Edit</a>
                                     <form action="{{ route('remove_product', $product->id) }}" method="POST" style="display: inline;">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE"> 
-                                        <button type="submit" class="btn btn-sm btn-outline-danger my-2" onclick="return confirm('Are you sure you want to remove this product?')">
-                                            <i class="bi bi-trash"></i> Remove
-                                        </button>
+                                        <button type="submit" class="btn btn-sm btn-outline-danger my-2" onclick="return confirm('Are you sure you want to remove this product?')"><i class="bi bi-trash"></i> Remove</button>
                                     </form>
                                 </td>
                             </tr>

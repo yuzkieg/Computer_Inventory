@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Supplier; // Import the Supplier model
 
 class InventoryController extends Controller
 {
-
     public function supplier()
     {
         return view('inventory.supplier'); // Ensure this view exists
@@ -24,7 +24,11 @@ class InventoryController extends Controller
     
     public function stockin()
     {
-        return view('inventory.stockin'); // Ensure this view exists
+        // Fetch all suppliers from the database
+        $suppliers = Supplier::all();
+        
+        // Pass suppliers to the stockin view
+        return view('inventory.stockin', compact('suppliers')); // Ensure this view exists
     }
     
     public function stockout()

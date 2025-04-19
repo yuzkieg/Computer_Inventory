@@ -20,7 +20,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
-            return redirect()->intended('dashboard'); // Adjust the intended route accordingly
+            return redirect()->intended('stacks'); // Adjust the intended route accordingly
         }
 
         return back()->withErrors(['username' => 'Invalid username or password'])->withInput();

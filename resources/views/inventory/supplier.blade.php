@@ -138,8 +138,8 @@
         <div class="sidebar">
             <img src="images/image.png" alt="Logo" class="logo">
             <h1>Inventory System</h1>
-            <a href="{{ route('dashboard') }}" class="nav-link">Place Order</a>
-            <a href="{{ route('stacks') }}" class="nav-link {{ Route::is('stacks') ? 'active' : '' }}">Stacks</a>
+            <a href="{{ route('order') }}" class="nav-link">Place Order</a>
+            <a href="{{ route('stacks') }}" class="nav-link {{ Route::is('stacks') ? 'active' : '' }}">Stocks</a>
             <a href="{{ route('supplier') }}" class="nav-link {{ Route::is('supplier') ? 'active' : '' }}">Supplier</a>
             <a href="{{ route('reports') }}" class="nav-link {{ Route::is('reports') ? 'active' : '' }}">Reports</a>
             <a href="{{ route('login') }}" class="logout-btn logout-btn:hover"><i class="bi bi-box-arrow-right"></i> Log out</a>
