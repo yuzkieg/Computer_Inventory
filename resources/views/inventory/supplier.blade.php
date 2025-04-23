@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supplier - Computer Parts Inventory</title>
+    <title>Supplier</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <style>
@@ -187,7 +187,7 @@
                                     <form action="{{ route('supplier.destroy', $supplier->id) }}" method="POST" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-danger btn-sm"> <i class="bi bi-trash"></i> Remove</button>
+                                        <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure to remove this supplier?')" > <i class="bi bi-trash"></i> Remove</button>
                                     </form>
                                 </td>
                             </tr>
