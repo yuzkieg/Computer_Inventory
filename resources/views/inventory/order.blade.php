@@ -86,12 +86,16 @@
         .modal-header, .modal-footer {
             background-color: white; /* Optional: Set background to white to contrast with black text */
         }
+        .sidebar h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
-            <img src="{{ asset('images/image.png') }}" alt="Logo" class="logo">
+            <img src="images/image.png" alt="Logo" class="logo">
             <h1>Inventory System</h1>
             <a href="{{ route('order') }}" class="nav-link {{ request()->routeIs('order') ? 'active' : '' }}">Place Order</a>
             <a href="{{ route('stacks') }}" class="nav-link {{ request()->routeIs('stacks') ? 'active' : '' }}">Stocks</a>

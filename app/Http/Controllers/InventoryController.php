@@ -30,6 +30,8 @@ class InventoryController extends Controller
         // Pass suppliers to the stockin view
         return view('inventory.stockin', compact('suppliers')); // Ensure this view exists
     }
+
+
     
     public function stockout()
     {
@@ -45,4 +47,6 @@ class InventoryController extends Controller
     {
         return view('inventory.update_product'); // Ensure this view exists
     }
+
+    
 }

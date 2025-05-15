@@ -128,7 +128,7 @@
                 @endif
 
                 <div class="d-flex justify-content-between" style="margin-top: 20px;">
-                    <a href="{{ route('stacks') }}" class="btn btn-danger">← Back</a>
+                    <a href="{{ route('stacks') }}" class="btn btn-secondary">← Back</a>
                 </div>
             </div>
         </div>

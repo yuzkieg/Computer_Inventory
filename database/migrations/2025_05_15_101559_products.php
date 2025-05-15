@@ -16,8 +16,10 @@ class CreateProductsTable extends Migration
             $table->decimal('price', 10, 2);
             $table->string('serial_number')->nullable();
             $table->unsignedBigInteger('supplier_id');
+            $table->string('product_lifespan')->nullable(); // New column
+            $table->string('supplier_warranty')->nullable(); // New column
             $table->timestamps();
-
+    
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
         });
     }

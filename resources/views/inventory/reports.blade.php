@@ -79,7 +79,7 @@
         }
 
         .container-box {
-            max-width: 1100px;
+            max-width: 1400pxspx;
             margin: auto;
             margin-top: 3%;
             padding: 20px;
@@ -87,7 +87,7 @@
         }
 
         .logo {
-            width: 150px;
+            width: 180px;
             margin-bottom: 20px;
         }
 
@@ -170,9 +170,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td colspan="9">No data available</td>
-                        </tr>
+                        @forelse ($reports as $report)
+                            <tr>
+                                <td>{{ $report->reorder ? 'Yes' : 'No' }}</td>
+                                <td>{{ $report->item_no }}</td>
+                                <td>{{ $report->product_name }}</td>
+                                <td>{{ $report->supplier }}</td>
+                                <td>₱{{ number_format($report->cost_per_item, 2) }}</td>
+                                <td>{{ $report->stock_quantity }}</td>
+                                <td>₱{{ number_format($report->inventory_value, 2) }}</td>
+                                <td>{{ $report->item_reorder_quantity }}</td>
+                                <td>{{ $report->item_discontinued ? 'Yes' : 'No' }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="9">No data available</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
 

@@ -14,11 +14,11 @@ class ProductController extends Controller
         return view('inventory.stacks', compact('products'));
     }
 
-    public function stockin()
-    {
-        $suppliers = Supplier::all();
-        return view('inventory.stockin', compact('suppliers'));
-    }
+public function stockin()
+{
+    $suppliers = Supplier::all();
+    return view('inventory.stockin', compact('suppliers'));
+}
 
     public function store(Request $request)
     {
@@ -93,18 +93,20 @@ class ProductController extends Controller
     }
 
     public function restock(Request $request, $id)
-{
-    // Validate that the input is an integer and defaults to 20 if not provided
-    $quantityToAdd = $request->input('quantity', 20);
-
-    $product = Product::findOrFail($id);
+    {
+        // Validate that 'quantity' is present and is an integer
+        $request->validate([
+            'quantity' => 'required|integer|min:1',
+        ]);
     
-    // Add to the current quantity
-    $product->quantity += intval($quantityToAdd);
-    $product->save();
-
-    return redirect()->route('stacks')->with('success', 'Product restocked successfully!');
-}
+        $product = Product::findOrFail($id);
+    
+        // Add the input quantity to the existing quantity
+        $product->quantity += $request->input('quantity');
+        $product->save();
+    
+        return redirect()->route('stacks')->with('success', 'Product restocked successfully!');
+    }
     public function stockOut()
     {
         // Fetching products with zero quantity
